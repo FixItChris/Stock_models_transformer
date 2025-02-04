@@ -6,8 +6,8 @@ if [ ! -d "./logs/EcmP_mk3" ]; then
     mkdir ./logs/EcmP_mk3
 fi
 
-if [ ! -d "./logs/EcmP_mk3/ecmp_stock" ]; then
-    mkdir ./logs/EcmP_mk3/ecmp_stock
+if [ ! -d "./logs/EcmP_mk3/ecmp_stock_wm" ]; then
+    mkdir ./logs/EcmP_mk3/ecmp_stock_wm
 fi
 
 model_name=EcmP_mk3
@@ -22,9 +22,9 @@ decomposition=0
 kernel_size=9
 
 #extras
-result_log_path=./result_log/EcmP_mk3/ecmp_stock_mix/t1_10_40.txt
+result_log_path=./result_log/EcmP_mk3/ecmp_stock_mix_wm/t1_10_40.txt
 
-root_path_name=./data/EcmP_stock_L_2016_24_mix/
+root_path_name=./data/EcmP_stock_L_2016_24_mix_wm/
 data_name=stock_custom
 
 random_seed=2023
@@ -77,11 +77,11 @@ do
             --scale $scale\
             --target $target\
             --dt_format_str $dt_format_str\
-            --enc_in 9 \
+            --enc_in 25 \
             --e_layers 2 \
-            --n_heads 3 \
+            --n_heads 5 \
             --d_patch 0 \
-            --d_model 36 \
+            --d_model 50 \
             --d_ff 64 \
             --dropout 0.1\
             --fc_dropout 0.1\
@@ -93,7 +93,7 @@ do
             --patience 19\
             --lradj 'TST'\
             --pct_start 0.1\
-            --itr 1 --batch_size 16 --learning_rate 0.0001 #>logs/EcmP_mk3/ecmp_stock/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
+            --itr 1 --batch_size 16 --learning_rate 0.0001 >logs/EcmP_mk3/ecmp_stock_wm/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
         done
 
     fi

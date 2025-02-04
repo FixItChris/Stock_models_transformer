@@ -2,6 +2,10 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
+if [ ! -d "./logs/EcmP_mk3" ]; then
+    mkdir ./logs/EcmP_mk3
+fi
+
 if [ ! -d "./logs/EcmP_mk3/ecmp_stock" ]; then
     mkdir ./logs/EcmP_mk3/ecmp_stock
 fi
@@ -20,7 +24,7 @@ kernel_size=9
 #extras
 result_log_path=./result_log/EcmP_mk3/ecmp_stock/final_10_40_best.txt
 
-root_path_name=./data/EcmP_stock_L_2016_24/
+root_path_name=./data/AAPL/ #EcmP_stock_L_2016_24/
 #data_path_name=stock_000001.SZ.csv
 #model_id_name=stock_000001SZ
 data_name=stock_custom

@@ -2,6 +2,10 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
+if [ ! -d "./logs/Ecmp_mk3" ]; then
+    mkdir ./logs/Ecmp_mk3
+fi
+
 if [ ! -d "./logs/EcmP_mk3/ecmp_stock" ]; then
     mkdir ./logs/EcmP_mk3/ecmp_stock
 fi
@@ -22,7 +26,7 @@ kernel_size=9
 #extras
 result_log_path=./result_log/EcmP_mk3/ecmp_stock/final_seq_60_pct.txt
 
-root_path_name=./data/EcmP_stock_L_2016_24_spec_official/
+root_path_name=./data/AAPL/ #EcmP_stock_L_2016_24_spec_official/
 data_name=stock_custom
 
 random_seed=2023

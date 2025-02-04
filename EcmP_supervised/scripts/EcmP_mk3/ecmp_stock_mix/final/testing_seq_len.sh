@@ -6,8 +6,8 @@ if [ ! -d "./logs/EcmP_mk3" ]; then
     mkdir ./logs/EcmP_mk3
 fi
 
-if [ ! -d "./logs/EcmP_mk3/ecmp_stock" ]; then
-    mkdir ./logs/EcmP_mk3/ecmp_stock
+if [ ! -d "./logs/EcmP_mk3/ecmp_stock_seq_len" ]; then
+    mkdir ./logs/EcmP_mk3/ecmp_stock_seq_len
 fi
 
 model_name=EcmP_mk3
@@ -22,7 +22,7 @@ decomposition=0
 kernel_size=9
 
 #extras
-result_log_path=./result_log/EcmP_mk3/ecmp_stock_mix/t1_10_40.txt
+result_log_path=./result_log/EcmP_mk3/ecmp_stock_mix/testing_seq_len.txt
 
 root_path_name=./data/EcmP_stock_L_2016_24_mix/
 data_name=stock_custom
@@ -51,10 +51,9 @@ do
             break_resume=1
         fi
 
-
-        for pred_len in 10 20 40
+	pred_len=10
+        for seq_len in 10 20 40
         do
-            seq_len=$pred_len
             python -u EcmP_supervised/run_longExp.py \
             --pe sincos\
             --learn_pe True\
@@ -81,7 +80,7 @@ do
             --e_layers 2 \
             --n_heads 3 \
             --d_patch 0 \
-            --d_model 36 \
+            --d_model 18 \
             --d_ff 64 \
             --dropout 0.1\
             --fc_dropout 0.1\
@@ -93,7 +92,7 @@ do
             --patience 19\
             --lradj 'TST'\
             --pct_start 0.1\
-            --itr 1 --batch_size 16 --learning_rate 0.0001 #>logs/EcmP_mk3/ecmp_stock/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
+            --itr 1 --batch_size 16 --learning_rate 0.0001 >logs/EcmP_mk3/ecmp_stock_seq_len/$model_name'_'$model_id_name'_'$seq_len'_'$pred_len.log 
         done
 
     fi
